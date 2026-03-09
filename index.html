@@ -72,7 +72,7 @@
         <h1 style="text-align: center;">Framework</h1>
       </div>
 
-      <div class="container" style="max-width:850px">
+      <div class="container" style="max-width:900px">
         <div style="text-align: center;">
           <img src="./assets/evflowgs/method.png" class="centerImage">
         </div>
@@ -85,59 +85,27 @@
         <div class="container" style="max-width: 800px" >
           <h1 style="text-align: center;">Abstract</h1>
           <p  style="text-align: justify; font-size: 16px;">
-            Neural Radiance Fields (NeRF) achieves impressive 3D representation learning and novel view synthesis results with high-quality multi-view images as input.
-            However, motion blur in images often occurs in low-light and high-speed motion scenes, which significantly degrades the reconstruction quality of NeRF.
-            Previous deblurring NeRF methods struggle to estimate pose and lighting changes during the exposure time, making them unable to accurately model the motion blur.
-            The bio-inspired event camera measuring intensity changes with high temporal resolution makes up this information deficiency.
-            In this paper, we propose Event-driven Bundle Adjustment for Deblurring Neural Radiance Fields (EBAD-NeRF) to jointly optimize the learnable poses and NeRF parameters by leveraging the hybrid event-RGB data.
-            An intensity-change-metric event loss and a photo-metric blur loss are introduced to strengthen the explicit modeling of camera motion blur.
-            Experiments on both synthetic and real-captured data demonstrate that EBAD-NeRF can obtain accurate camera trajectory during the exposure time and learn a sharper 3D representations compared to prior works.
+            Achieving sharp 3D reconstruction from motionblurred images alone becomes challenging, motivating recent
+methods to incorporate event cameras, benefiting from microsecond temporal resolution. However, they suffer from residual
+artifacts and blurry texture details due to misleading supervision
+from inaccurate event double integral priors and noisy, blurry
+events. In this study, we propose EvFlow-GS, a unified framework
+that leverages event streams and optical flow to optimize an endto-end learnable double integral (LDI), camera poses, and 3D
+Gaussian Splatting (3DGS) jointly on-the-fly. Specifically, we first
+extract edge information from the events using optical flow and
+then formulate a novel event-based loss applied separately to
+different modules. Additionally, we exploit a novel event-residual
+prior to strengthen the supervision of intensity changes between
+images rendered from 3DGS. Finally, we integrate the outputs of
+both 3DGS and LDI into a joint loss, enabling their optimization
+to mutually facilitate each other. Experiments demonstrate the
+leading performance of our EvFlow-GS.
           </p>
         </div>
       </div>
     </section>
 
-    <div style="text-align: center;">
-      <div class="head_cap">
-        <h1 style="text-align: center;">Qualitative Results on Real Data</h1>
-      </div>
-      <div class="container" style="max-width:850px">
-        <div style="text-align: center;">
-          <img src="./assets/EBAD-NeRF/gif1.gif" class="centerImage">
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align: center;">
-      <div class="head_cap">
-        <p style="font-size: 24px">
-          <h1 style="text-align: center;">Qualitative Results on Synthetic Data</h1>
-        </p>
-      </div>
-      <div class="container" style="max-width:850px">
-        <div style="text-align: center;">
-          <img src="./assets/EBAD-NeRF/gif2.gif" class="centerImage">
-        </div>
-      </div>
-    </div>
-    <div style="text-align: center;">
-      <div class="container" style="max-width:850px">
-        <div style="text-align: center;">
-          <img src="./assets/EBAD-NeRF/gif3.gif" class="centerImage">
-        </div>
-      </div>
-    </div>
-
     
-
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container" style="max-width: 800px" >
-          <h1 style="text-align: center;">Supplementary Video</h1>
-          <iframe width="800" height="450" src="https://www.youtube.com/embed/irCtKi-OO8g?si=lDrXRNM4QGxQ4VPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
 
 
    
@@ -177,5 +145,6 @@
     </script>
   </body>
 </html>
+
 
 
